@@ -1,24 +1,36 @@
 package com.qzk.dp.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serializable;
-import java.util.Date;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
+
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
+ * <p>
  * 
- * @TableName tb_user_info
+ * </p>
+ *
+ * @author 虎哥
+ * @since 2021-12-24
  */
-@TableName(value ="tb_user_info")
 @Data
+@EqualsAndHashCode(callSuper = false)
+@Accessors(chain = true)
+@TableName("tb_user_info")
 public class UserInfo implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     /**
      * 主键，用户id
      */
-    @TableId
+    @TableId(value = "user_id", type = IdType.AUTO)
     private Long userId;
 
     /**
@@ -34,43 +46,42 @@ public class UserInfo implements Serializable {
     /**
      * 粉丝数量
      */
-    private Object fans;
+    private Integer fans;
 
     /**
      * 关注的人的数量
      */
-    private Object followee;
+    private Integer followee;
 
     /**
      * 性别，0：男，1：女
      */
-    private Integer gender;
+    private Boolean gender;
 
     /**
      * 生日
      */
-    private Date birthday;
+    private LocalDate birthday;
 
     /**
      * 积分
      */
-    private Object credits;
+    private Integer credits;
 
     /**
      * 会员级别，0~9级,0代表未开通会员
      */
-    private Integer level;
+    private Boolean level;
 
     /**
      * 创建时间
      */
-    private Date createTime;
+    private LocalDateTime createTime;
 
     /**
      * 更新时间
      */
-    private Date updateTime;
+    private LocalDateTime updateTime;
 
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
+
 }

@@ -1,0 +1,120 @@
+2023/02/06 08:40:19 [notice] 1#1: using the "epoll" event method
+2023/02/06 08:40:19 [notice] 1#1: nginx/1.21.5
+2023/02/06 08:40:19 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/02/06 08:40:19 [notice] 1#1: OS: Linux 5.10.124-linuxkit
+2023/02/06 08:40:19 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/02/06 08:40:19 [notice] 1#1: start worker processes
+2023/02/06 08:40:19 [notice] 1#1: start worker process 22
+2023/02/06 08:40:19 [notice] 1#1: start worker process 23
+2023/02/06 08:40:19 [notice] 1#1: start worker process 24
+2023/02/06 08:40:19 [notice] 1#1: start worker process 25
+2023/02/06 08:41:57 [notice] 1#1: using the "epoll" event method
+2023/02/06 08:41:57 [notice] 1#1: nginx/1.21.5
+2023/02/06 08:41:57 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/02/06 08:41:57 [notice] 1#1: OS: Linux 5.10.124-linuxkit
+2023/02/06 08:41:57 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/02/06 08:41:57 [notice] 1#1: start worker processes
+2023/02/06 08:41:57 [notice] 1#1: start worker process 22
+2023/02/06 08:41:57 [notice] 1#1: start worker process 23
+2023/02/06 08:41:57 [notice] 1#1: start worker process 24
+2023/02/06 08:41:57 [notice] 1#1: start worker process 25
+2023/02/06 08:52:17 [notice] 44#44: signal process started
+2023/02/06 08:52:17 [notice] 1#1: signal 1 (SIGHUP) received from 44, reconfiguring
+2023/02/06 08:52:17 [notice] 1#1: reconfiguring
+2023/02/06 08:52:17 [notice] 1#1: using the "epoll" event method
+2023/02/06 08:52:17 [notice] 1#1: start worker processes
+2023/02/06 08:52:17 [notice] 1#1: start worker process 45
+2023/02/06 08:52:17 [notice] 1#1: start worker process 46
+2023/02/06 08:52:17 [notice] 1#1: start worker process 47
+2023/02/06 08:52:17 [notice] 1#1: start worker process 48
+2023/02/06 08:52:17 [notice] 22#22: gracefully shutting down
+2023/02/06 08:52:17 [notice] 23#23: gracefully shutting down
+2023/02/06 08:52:17 [notice] 23#23: exiting
+2023/02/06 08:52:17 [notice] 24#24: gracefully shutting down
+2023/02/06 08:52:17 [notice] 25#25: gracefully shutting down
+2023/02/06 08:52:17 [notice] 22#22: exiting
+2023/02/06 08:52:17 [notice] 22#22: exit
+2023/02/06 08:52:17 [notice] 23#23: exit
+2023/02/06 08:52:17 [notice] 24#24: exiting
+2023/02/06 08:52:17 [notice] 24#24: exit
+2023/02/06 08:52:17 [notice] 25#25: exiting
+2023/02/06 08:52:17 [notice] 25#25: exit
+2023/02/06 08:52:17 [notice] 1#1: signal 17 (SIGCHLD) received from 22
+2023/02/06 08:52:17 [notice] 1#1: worker process 22 exited with code 0
+2023/02/06 08:52:17 [notice] 1#1: signal 29 (SIGIO) received
+2023/02/06 08:52:17 [notice] 1#1: signal 17 (SIGCHLD) received from 23
+2023/02/06 08:52:17 [notice] 1#1: worker process 23 exited with code 0
+2023/02/06 08:52:17 [notice] 1#1: worker process 24 exited with code 0
+2023/02/06 08:52:17 [notice] 1#1: worker process 25 exited with code 0
+2023/02/06 08:52:17 [notice] 1#1: signal 29 (SIGIO) received
+2023/02/06 08:52:17 [notice] 1#1: signal 17 (SIGCHLD) received from 25
+2023/02/06 08:52:22 [error] 46#46: *2 "/etc/nginx/html/hmdp/index.html" is not found (2: No such file or directory), client: 172.17.0.1, server: localhost, request: "GET / HTTP/1.1", host: "localhost:8080"
+2023/02/06 08:52:25 [error] 46#46: *2 "/etc/nginx/html/hmdp/index.html" is not found (2: No such file or directory), client: 172.17.0.1, server: localhost, request: "GET / HTTP/1.1", host: "localhost:8080"
+2023/02/06 08:56:17 [error] 45#45: *3 open() "/etc/nginx/html/hmdp/test2" failed (2: No such file or directory), client: 172.17.0.1, server: localhost, request: "GET /test2 HTTP/1.1", host: "localhost:8080"
+2023/02/06 08:56:20 [error] 45#45: *3 "/etc/nginx/html/hmdp/index.html" is not found (2: No such file or directory), client: 172.17.0.1, server: localhost, request: "GET / HTTP/1.1", host: "localhost:8080"
+2023/02/06 08:56:35 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/02/06 08:56:35 [notice] 45#45: gracefully shutting down
+2023/02/06 08:56:35 [notice] 47#47: gracefully shutting down
+2023/02/06 08:56:35 [notice] 47#47: exiting
+2023/02/06 08:56:35 [notice] 48#48: gracefully shutting down
+2023/02/06 08:56:35 [notice] 46#46: gracefully shutting down
+2023/02/06 08:56:35 [notice] 47#47: exit
+2023/02/06 08:56:35 [notice] 48#48: exiting
+2023/02/06 08:56:35 [notice] 46#46: exiting
+2023/02/06 08:56:35 [notice] 46#46: exit
+2023/02/06 08:56:35 [notice] 48#48: exit
+2023/02/06 08:56:35 [notice] 1#1: signal 17 (SIGCHLD) received from 47
+2023/02/06 08:56:35 [notice] 1#1: worker process 47 exited with code 0
+2023/02/06 08:56:35 [notice] 1#1: signal 29 (SIGIO) received
+2023/02/06 08:56:35 [notice] 1#1: signal 17 (SIGCHLD) received from 48
+2023/02/06 08:56:35 [notice] 1#1: worker process 48 exited with code 0
+2023/02/06 08:56:35 [notice] 1#1: signal 29 (SIGIO) received
+2023/02/06 08:56:35 [notice] 1#1: signal 17 (SIGCHLD) received from 46
+2023/02/06 08:56:35 [notice] 1#1: worker process 46 exited with code 0
+2023/02/06 08:56:35 [notice] 1#1: signal 29 (SIGIO) received
+2023/02/06 08:56:45 [notice] 1#1: using the "epoll" event method
+2023/02/06 08:56:45 [notice] 1#1: nginx/1.21.5
+2023/02/06 08:56:45 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/02/06 08:56:45 [notice] 1#1: OS: Linux 5.10.124-linuxkit
+2023/02/06 08:56:45 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/02/06 08:56:45 [notice] 1#1: start worker processes
+2023/02/06 08:56:45 [notice] 1#1: start worker process 29
+2023/02/06 08:56:45 [notice] 1#1: start worker process 30
+2023/02/06 08:56:45 [notice] 1#1: start worker process 31
+2023/02/06 08:56:45 [notice] 1#1: start worker process 32
+2023/02/06 08:56:52 [error] 29#29: *1 "/etc/nginx/html/hmdp/index.html" is not found (2: No such file or directory), client: 172.17.0.1, server: localhost, request: "GET / HTTP/1.1", host: "localhost:8080"
+2023/02/06 08:56:56 [error] 29#29: *1 "/etc/nginx/html/hmdp/index.html" is not found (2: No such file or directory), client: 172.17.0.1, server: localhost, request: "GET / HTTP/1.1", host: "localhost:8080"
+2023/02/06 08:58:41 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/02/06 08:58:41 [notice] 32#32: gracefully shutting down
+2023/02/06 08:58:41 [notice] 32#32: exiting
+2023/02/06 08:58:41 [notice] 29#29: gracefully shutting down
+2023/02/06 08:58:41 [notice] 29#29: exiting
+2023/02/06 08:58:41 [notice] 31#31: gracefully shutting down
+2023/02/06 08:58:41 [notice] 31#31: exiting
+2023/02/06 08:58:41 [notice] 30#30: gracefully shutting down
+2023/02/06 08:58:41 [notice] 32#32: exit
+2023/02/06 08:58:41 [notice] 29#29: exit
+2023/02/06 08:58:41 [notice] 31#31: exit
+2023/02/06 08:58:41 [notice] 30#30: exiting
+2023/02/06 08:58:41 [notice] 30#30: exit
+2023/02/06 08:58:41 [notice] 1#1: signal 17 (SIGCHLD) received from 30
+2023/02/06 08:58:41 [notice] 1#1: worker process 30 exited with code 0
+2023/02/06 08:58:41 [notice] 1#1: worker process 29 exited with code 0
+2023/02/06 08:58:41 [notice] 1#1: worker process 31 exited with code 0
+2023/02/06 08:58:41 [notice] 1#1: worker process 32 exited with code 0
+2023/02/06 08:58:41 [notice] 1#1: exit
+2023/02/06 08:58:42 [notice] 1#1: using the "epoll" event method
+2023/02/06 08:58:42 [notice] 1#1: nginx/1.21.5
+2023/02/06 08:58:42 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/02/06 08:58:42 [notice] 1#1: OS: Linux 5.10.124-linuxkit
+2023/02/06 08:58:42 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/02/06 08:58:42 [notice] 1#1: start worker processes
+2023/02/06 08:58:42 [notice] 1#1: start worker process 30
+2023/02/06 08:58:42 [notice] 1#1: start worker process 31
+2023/02/06 08:58:42 [notice] 1#1: start worker process 32
+2023/02/06 08:58:42 [notice] 1#1: start worker process 33
+2023/02/06 08:58:54 [error] 33#33: *6 connect() failed (111: Connection refused) while connecting to upstream, client: 172.17.0.1, server: localhost, request: "GET /api/shop-type/list HTTP/1.1", upstream: "http://127.0.0.1:8081/shop-type/list", host: "localhost:8080", referrer: "http://localhost:8080/"
+2023/02/06 08:58:54 [error] 33#33: *6 open() "/etc/nginx/html/50x.html" failed (2: No such file or directory), client: 172.17.0.1, server: localhost, request: "GET /api/shop-type/list HTTP/1.1", upstream: "http://127.0.0.1:8081/shop-type/list", host: "localhost:8080", referrer: "http://localhost:8080/"
+2023/02/06 08:58:54 [error] 33#33: *5 connect() failed (111: Connection refused) while connecting to upstream, client: 172.17.0.1, server: localhost, request: "GET /api/blog/hot?current=1 HTTP/1.1", upstream: "http://127.0.0.1:8081/blog/hot?current=1", host: "localhost:8080", referrer: "http://localhost:8080/"
+2023/02/06 08:58:54 [error] 33#33: *5 open() "/etc/nginx/html/50x.html" failed (2: No such file or directory), client: 172.17.0.1, server: localhost, request: "GET /api/blog/hot?current=1 HTTP/1.1", upstream: "http://127.0.0.1:8081/blog/hot?current=1", host: "localhost:8080", referrer: "http://localhost:8080/"
+2023/02/07 00:34:00 [notice] 31#31: signal 15 (SIGTERM) received, exiting

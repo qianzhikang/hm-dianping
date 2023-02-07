@@ -1,24 +1,35 @@
 package com.qzk.dp.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serializable;
-import java.util.Date;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
+
+import java.io.Serializable;
+import java.time.LocalDateTime;
 
 /**
+ * <p>
  * 
- * @TableName tb_voucher_order
+ * </p>
+ *
+ * @author 虎哥
+ * @since 2021-12-22
  */
-@TableName(value ="tb_voucher_order")
 @Data
+@EqualsAndHashCode(callSuper = false)
+@Accessors(chain = true)
+@TableName("tb_voucher_order")
 public class VoucherOrder implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     /**
      * 主键
      */
-    @TableId
+    @TableId(value = "id", type = IdType.INPUT)
     private Long id;
 
     /**
@@ -44,28 +55,27 @@ public class VoucherOrder implements Serializable {
     /**
      * 下单时间
      */
-    private Date createTime;
+    private LocalDateTime createTime;
 
     /**
      * 支付时间
      */
-    private Date payTime;
+    private LocalDateTime payTime;
 
     /**
      * 核销时间
      */
-    private Date useTime;
+    private LocalDateTime useTime;
 
     /**
      * 退款时间
      */
-    private Date refundTime;
+    private LocalDateTime refundTime;
 
     /**
      * 更新时间
      */
-    private Date updateTime;
+    private LocalDateTime updateTime;
 
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
+
 }

@@ -1,24 +1,35 @@
 package com.qzk.dp.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serializable;
-import java.util.Date;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
+
+import java.io.Serializable;
+import java.time.LocalDateTime;
 
 /**
+ * <p>
  * 
- * @TableName tb_user
+ * </p>
+ *
+ * @author 虎哥
+ * @since 2021-12-22
  */
-@TableName(value ="tb_user")
 @Data
+@EqualsAndHashCode(callSuper = false)
+@Accessors(chain = true)
+@TableName("tb_user")
 public class User implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     /**
      * 主键
      */
-    @TableId(type = IdType.AUTO)
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
     /**
@@ -32,25 +43,24 @@ public class User implements Serializable {
     private String password;
 
     /**
-     * 昵称，默认是用户id
+     * 昵称，默认是随机字符
      */
     private String nickName;
 
     /**
-     * 人物头像
+     * 用户头像
      */
-    private String icon;
+    private String icon = "";
 
     /**
      * 创建时间
      */
-    private Date createTime;
+    private LocalDateTime createTime;
 
     /**
      * 更新时间
      */
-    private Date updateTime;
+    private LocalDateTime updateTime;
 
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
+
 }

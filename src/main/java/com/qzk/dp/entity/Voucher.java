@@ -4,21 +4,33 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serializable;
-import java.util.Date;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
+
+import java.io.Serializable;
+import java.time.LocalDateTime;
 
 /**
+ * <p>
  * 
- * @TableName tb_voucher
+ * </p>
+ *
+ * @author 虎哥
+ * @since 2021-12-22
  */
-@TableName(value ="tb_voucher")
 @Data
+@EqualsAndHashCode(callSuper = false)
+@Accessors(chain = true)
+@TableName("tb_voucher")
 public class Voucher implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     /**
      * 主键
      */
-    @TableId(type = IdType.AUTO)
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
     /**
@@ -42,35 +54,52 @@ public class Voucher implements Serializable {
     private String rules;
 
     /**
-     * 支付金额，单位是分。例如200代表2元
+     * 支付金额
      */
     private Long payValue;
 
     /**
-     * 抵扣金额，单位是分。例如200代表2元
+     * 抵扣金额
      */
     private Long actualValue;
 
     /**
-     * 0,普通券；1,秒杀券
+     * 优惠券类型
      */
     private Integer type;
 
     /**
-     * 1,上架; 2,下架; 3,过期
+     * 优惠券类型
      */
     private Integer status;
+    /**
+     * 库存
+     */
+    @TableField(exist = false)
+    private Integer stock;
+
+    /**
+     * 生效时间
+     */
+    @TableField(exist = false)
+    private LocalDateTime beginTime;
+
+    /**
+     * 失效时间
+     */
+    @TableField(exist = false)
+    private LocalDateTime endTime;
 
     /**
      * 创建时间
      */
-    private Date createTime;
+    private LocalDateTime createTime;
+
 
     /**
      * 更新时间
      */
-    private Date updateTime;
+    private LocalDateTime updateTime;
 
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
+
 }

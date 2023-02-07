@@ -1,18 +1,16 @@
 package com.qzk.dp.mapper;
 
-import com.qzk.dp.entity.ShopType;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.qzk.dp.entity.ShopType;
 
 /**
-* @author qianzhikang
-* @description 针对表【tb_shop_type】的数据库操作Mapper
-* @createDate 2023-02-06 11:35:35
-* @Entity com.qzk.dp.entity.ShopType
-*/
+ * <p>
+ *  Mapper 接口
+ * </p>
+ *
+ * @author 虎哥
+ * @since 2021-12-22
+ */
 public interface ShopTypeMapper extends BaseMapper<ShopType> {
 
 }
-
-
-
-

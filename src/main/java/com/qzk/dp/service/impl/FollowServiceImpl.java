@@ -2,21 +2,19 @@ package com.qzk.dp.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.qzk.dp.entity.Follow;
-import com.qzk.dp.service.FollowService;
 import com.qzk.dp.mapper.FollowMapper;
+import com.qzk.dp.service.IFollowService;
 import org.springframework.stereotype.Service;
 
 /**
-* @author qianzhikang
-* @description 针对表【tb_follow】的数据库操作Service实现
-* @createDate 2023-02-06 11:35:35
-*/
+ * <p>
+ *  服务实现类
+ * </p>
+ *
+ * @author 虎哥
+ * @since 2021-12-22
+ */
 @Service
-public class FollowServiceImpl extends ServiceImpl<FollowMapper, Follow>
-    implements FollowService{
+public class FollowServiceImpl extends ServiceImpl<FollowMapper, Follow> implements IFollowService {
 
 }
-
-
-
-

@@ -4,32 +4,57 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serializable;
-import java.util.Date;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
+
+import java.io.Serializable;
+import java.time.LocalDateTime;
 
 /**
+ * <p>
  * 
- * @TableName tb_blog
+ * </p>
+ *
+ * @author 虎哥
+ * @since 2021-12-22
  */
-@TableName(value ="tb_blog")
 @Data
+@EqualsAndHashCode(callSuper = false)
+@Accessors(chain = true)
+@TableName("tb_blog")
 public class Blog implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     /**
      * 主键
      */
-    @TableId(type = IdType.AUTO)
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
-
     /**
      * 商户id
      */
     private Long shopId;
-
     /**
      * 用户id
      */
     private Long userId;
+    /**
+     * 用户图标
+     */
+    @TableField(exist = false)
+    private String icon;
+    /**
+     * 用户姓名
+     */
+    @TableField(exist = false)
+    private String name;
+    /**
+     * 是否点赞过了
+     */
+    @TableField(exist = false)
+    private Boolean isLike;
 
     /**
      * 标题
@@ -49,23 +74,22 @@ public class Blog implements Serializable {
     /**
      * 点赞数量
      */
-    private Object liked;
+    private Integer liked;
 
     /**
      * 评论数量
      */
-    private Object comments;
+    private Integer comments;
 
     /**
      * 创建时间
      */
-    private Date createTime;
+    private LocalDateTime createTime;
 
     /**
      * 更新时间
      */
-    private Date updateTime;
+    private LocalDateTime updateTime;
 
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
+
 }
