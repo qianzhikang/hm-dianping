@@ -186,7 +186,59 @@ public Result queryById(Long id) {
 > 互斥锁方案实现
 
 ```java
+    /**
+     * 查询店铺（互斥锁解决缓存击穿）
+     *
+     * @param id 店铺id
+     * @return
+     */
+    private Shop queryWithMutex(Long id) {
+        // 1.查询缓存
+        String key = CACHE_SHOP_KEY + id;
+        String shopJson = stringRedisTemplate.opsForValue().get(key);
+        // 存在 -> 返回
+        if (StrUtil.isNotBlank(shopJson)) {
+            Shop shop = JSONUtil.toBean(shopJson, Shop.class);
+            return shop;
+        }
+        // 判断是否命中空值
+        if (shopJson != null) {
+            return null;
+        }
+        Shop shop = null;
+        try {
+            // 执行缓存重建
+            // 获取互斥锁
+            boolean isLock = tryLock(LOCK_SHOP_KEY + id);
+            if (!isLock) {
+                Thread.sleep(50);
+              	// double check 保证一致性
+                shopJson = stringRedisTemplate.opsForValue().get(key);
+                if (StrUtil.isNotBlank(shopJson)) {
+                    shop = JSONUtil.toBean(shopJson, Shop.class);
+                    return shop;
+                }
+                return queryWithMutex(id);
+            }
+            // 2. 不存在 -> 查询数据库
+            shop = getById(id);
+            // 不存在 -> 返回
+            if (shop == null) {
+                // 缓存空对象
+                stringRedisTemplate.opsForValue().set(key, "", CACHE_NULL_TTL, TimeUnit.MINUTES);
+                return null;
+            }
+            // 存在写入redis 添加过期时间
+            stringRedisTemplate.opsForValue().set(key, JSONUtil.toJsonStr(shop), CACHE_SHOP_TTL, TimeUnit.MINUTES);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        } finally {
+            unlock(LOCK_SHOP_KEY + id);
+        }
 
+        // 返回
+        return shop;
+    }
 ```
 
 #### 逻辑过期（低一致性方案）
@@ -194,3 +246,8 @@ public Result queryById(Long id) {
 ![1653360308731](assets/1653360308731.png)
 
 > 逻辑过期方案实现
+
+```
+
+```
+
