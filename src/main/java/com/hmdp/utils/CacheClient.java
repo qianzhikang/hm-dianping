@@ -104,15 +104,14 @@ public class CacheClient {
 
     /**
      *
-     * @param keyPrefix
-     * @param id
-     * @param type
-     * @param function
-     * @param time
-     * @param timeUnit
-     * @return
-     * @param <R>
-     * @param <ID>
+     * @param keyPrefix key前缀
+     * @param id        id
+     * @param type      返回值类型
+     * @param function  数据库查询逻辑
+     * @param time      查询数据库后，存入缓存的过期时间
+     * @param timeUnit  时间单位
+     * @param <R>       返回值类型
+     * @param <ID>      查询参数
      */
     public <R, ID> R queryWithLogicalExpire(String keyPrefix, ID id, Class<R> type, Function<ID, R> function, Long time, TimeUnit timeUnit) {
         // 构造redis查询key
@@ -152,8 +151,6 @@ public class CacheClient {
         }
         return r;
     }
-
-
     /**
      * 获取互斥锁
      */
@@ -169,6 +166,5 @@ public class CacheClient {
     private void unlock(String key) {
         stringRedisTemplate.delete(key);
     }
-
 
 }
