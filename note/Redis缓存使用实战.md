@@ -247,7 +247,65 @@ public Result queryById(Long id) {
 
 > 逻辑过期方案实现
 
-```
-
+```java
+/**
+     * 查询店铺（逻辑过期解决缓存击穿）
+     *
+     * @param id 店铺id
+     * @return
+     */
+    private Shop queryWithLogicalExpire(Long id) {
+        // 查询缓存
+        String key = CACHE_SHOP_KEY + id;
+        String shopJson = stringRedisTemplate.opsForValue().get(key);
+        // 不存在 -> 返回 null
+        if (StrUtil.isBlank(shopJson)) {
+            return null;
+        }
+        // 存在
+        RedisData redisData = JSONUtil.toBean(shopJson, RedisData.class);
+        JSONObject data = (JSONObject) redisData.getData();
+        Shop shop = JSONUtil.toBean(data, Shop.class);
+        LocalDateTime expireTime = redisData.getExpireTime();
+        // 判断是否过期
+        if (expireTime.isAfter(LocalDateTime.now())) {
+            // 未过期 -> 返回
+            return shop;
+        }
+        // 过期 -> 缓存重建
+        // 缓存重建
+        // 获取锁 成功 -> 开启线程执行缓存重建
+        boolean isLock = tryLock(LOCK_SHOP_KEY + id);
+        if (isLock) {
+            // double check 查询过期时间
+            shopJson = stringRedisTemplate.opsForValue().get(key);
+            // 不存在 -> 返回 null
+            if (StrUtil.isBlank(shopJson)) {
+                return null;
+            }
+            // 存在
+            redisData = JSONUtil.toBean(shopJson, RedisData.class);
+            data = (JSONObject) redisData.getData();
+            shop = JSONUtil.toBean(data, Shop.class);
+            expireTime = redisData.getExpireTime();
+            // 判断是否过期
+            if (expireTime.isAfter(LocalDateTime.now())) {
+                // 未过期 -> 返回
+                return shop;
+            }
+            // 过期
+            CACHE_REBUILD_EXECUTOR.submit(() -> {
+                try {
+                    this.saveShop2Redis(id, 20L);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                } finally {
+                    unlock(LOCK_SHOP_KEY + id);
+                }
+            });
+        }
+        // 获取锁 失败 -> 返回老数据（过期的）
+        return shop;
+    }
 ```
 
