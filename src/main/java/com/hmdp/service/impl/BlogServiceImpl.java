@@ -106,7 +106,7 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements IB
             boolean isSuccess = update().setSql("liked = liked - 1").eq("id", id).update();
             if (isSuccess) {
                 // 移除redis的set集合内用户id
-                stringRedisTemplate.opsForZSet().remove(key, userId.toString(), System.currentTimeMillis());
+                stringRedisTemplate.opsForZSet().remove(key, userId.toString());
             }
         }
         return Result.ok();
